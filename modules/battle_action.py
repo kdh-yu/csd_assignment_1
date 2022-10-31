@@ -2,7 +2,7 @@
 
 from modules.battle import is_effective
 import random, time, os
-from initial_setting import cl
+from modules.initial_setting import cl
 
 def skill_attack(player, enemy):
     print(f"\r{player.pokemon[0].nickname} used {player.pokemon[0].elemental_attack}!")
@@ -39,6 +39,7 @@ def pokeball(player, enemy):
         print(f"Gotcha! {enemy.species} was caught!")
         time.sleep(1)
         os.system(cl())
+        that_hp = enemy.hp
         print(f'''
 ┌────────────────────┐
     {enemy.species}
@@ -49,7 +50,9 @@ def pokeball(player, enemy):
             nick = input(f"What is {enemy.species}\'s nickname? : ")
             enemy.nickname = nick
         gotcha = enemy
+        gotcha.hp = that_hp
         player.pokemon.append(gotcha)
+        os.system(cl())
         return True
     else:
         print("Oh no! The Pokemon broke Free!")
@@ -57,18 +60,23 @@ def pokeball(player, enemy):
         return False
 
 def change_pokemon(player):
-    if len(player.pokemon) != 1:
+    if len(player.pokemon) > 1:
         ind = 1
         for i in player.pokemon:
-            print(f'{ind} : {i.nickname}')
+            print(f'{ind} : {i.nickname} ({i.hp} / 50)')
             ind += 1
         to_what = int(input('What pokemon? : '))
         if to_what == 0 or to_what < 0 or to_what > len(player.pokemon):
             pass  # Think more
         else:
+            print(f"{player.pokemon[0].nickname}, switch out! Come back!")
+            time.sleep(1)
+            print(f"Go! {player.pokemon[to_what-1].nickname}!")
+            time.sleep(1)
             player.pokemon[0], player.pokemon[to_what - 1] = player.pokemon[to_what - 1], player.pokemon[0]
     else:
         print("You have only one Pokemon!")
+        time.sleep(1)
 
 def action(act, player, enemy):
     if act == 1:
@@ -82,7 +90,7 @@ def action(act, player, enemy):
     elif act == 5:
         change_pokemon(player)
     else:
-        physical_attack(player, enemy)
+        print(f"{player.pokemon[0].nickname} did nothing!")
 
 def enemy_action(player, enemy):
     eff = is_effective(enemy.attribute, player.pokemon[0].attribute)

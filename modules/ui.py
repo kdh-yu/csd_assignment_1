@@ -3,7 +3,7 @@
 from modules.battle import hp_bar
 import time
 import os
-from initial_setting import cl
+from modules.initial_setting import cl
 
 def name_displayer(name):
     return name + ' ' * (10 - len(name))
