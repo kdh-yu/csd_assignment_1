@@ -70,6 +70,8 @@ while step <= 3:
 
             if encounter.hp <= 0:  # Order 7
                 print(f'Enemy {encounter.species} fainted!')
+                time.sleep(1)
+                os.system(cl())
                 break
 
             enemy_action(player, encounter)  # Order 9 (modified) : If not effective, enemy uses tackle.
