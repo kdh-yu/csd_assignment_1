@@ -20,7 +20,7 @@ Let's Choose Your Pokemon among 3 of Pokemons and take a walk!
 |Species|Charmander|Squirtle|Bulbasaur|
 |Attribute|Fire|Water|Grass|
 |Elemental Attack|Ember|Water Gun|Vine Whip|
-|Physical Attack||Tackle||
+|Physical Attack|Tackle|Tackle|Tackle|
 |HP|50|50|50|
 |Strong Against|Grass|Fire|Water|
 |Weak Against|Water|Grass|Fire|
