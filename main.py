@@ -57,7 +57,7 @@ while step <= 3:
 
             if intro_message == 0:
                 print(f"   Wild {encounter.species} appeared!", end="\r")
-                time.sleep(3)
+                time.sleep(2)
                 intro_message += 1
             print("                                                     ", end='\r')
             act = int(input('What to do? : '))
@@ -75,20 +75,26 @@ while step <= 3:
                 break
 
             enemy_action(player, encounter)  # Order 9 (modified) : If not effective, enemy uses tackle.
+
             if player.pokemon[0].hp <= 0:  # Order 7
                 print(f"{player.pokemon[0].nickname} has fainted!")
                 player.pokemon.remove(player.pokemon[0])
                 if len(player.pokemon) == 0:  # Order 7 - A
                     print("You are out of Pokemon!")
+                    time.sleep(1)
                     step = 5
                     clear = False
                     break
                 else:  # Order 7 - B
-                    change_pokemon(player)
+                    change_pokemon(player, forced=True)
 
 if clear:  # Order 11
-    time.sleep(1)
     print(f'\n{player.name} became Pokemon Master! Congratulations!!')
+    time.sleep(1)
+    idx = 1
+    for i in player.pokemon:
+        print(f"{idx} : {i.nickname} ({i.species}) ({i.hp} / 50)")
+        idx += 1
 else:
     time.sleep(1)
     print(f'\n{player.name} blacked out!')

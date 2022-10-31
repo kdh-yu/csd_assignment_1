@@ -6,7 +6,7 @@ import os
 from modules.initial_setting import cl
 
 def name_displayer(name):
-    return name + ' ' * (10 - len(name))
+    return name + ' ' * (15 - len(name))
 
 def hp_num_displayer(hp):
     if hp >= 10:
@@ -18,7 +18,7 @@ def battle_ui(player, enemy):
     os.system(cl())
     print(f'''
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                                    Enemy: {name_displayer(enemy.species)}                        │
+│                                    Enemy: {name_displayer(enemy.species)}                   │
 │                                    {hp_bar(enemy.hp)} ({hp_num_displayer(enemy.hp)} / 50)    │
 │                                                                             │
 │                                                                             │
@@ -26,7 +26,7 @@ def battle_ui(player, enemy):
 │                                                                             │
 │                                                    1. Skill Attack          │
 │                                                    2. Physical Attack       │
-│You: {name_displayer(player.pokemon[0].nickname)}                                     3. Cure                  │
+│You: {name_displayer(player.pokemon[0].nickname)}                                3. Cure                  │
 │{hp_bar(player.pokemon[0].hp)} ({hp_num_displayer(player.pokemon[0].hp)} / 50)               4. Capture               │
 │                                                    5. Change Pokemon        │
 └─────────────────────────────────────────────────────────────────────────────┘''')

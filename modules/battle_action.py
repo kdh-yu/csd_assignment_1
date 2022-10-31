@@ -3,6 +3,7 @@
 from modules.battle import is_effective
 import random, time, os
 from modules.initial_setting import cl
+from modules.Class import Pokemon
 
 def skill_attack(player, enemy):
     print(f"\r{player.pokemon[0].nickname} used {player.pokemon[0].elemental_attack}!")
@@ -30,6 +31,7 @@ def hp_restore(player):
 
 def pokeball(player, enemy):
     print(f'{player.name} used the PokeBall.')
+    shp = enemy.hp
     time.sleep(1)
     if enemy.hp < 25:
         is_catched = random.choices(['success', 'fail'], weights=[0.9, 0.1])
@@ -39,18 +41,16 @@ def pokeball(player, enemy):
         print(f"Gotcha! {enemy.species} was caught!")
         time.sleep(1)
         os.system(cl())
-        that_hp = enemy.hp
         print(f'''
 ┌────────────────────┐
     {enemy.species}
 └────────────────────┘
         ''')
+        gotcha = Pokemon(enemy.species, enemy.attribute, enemy.elemental_attack, enemy.hp, enemy.maxHP, enemy.strong_against, enemy.weak_against)
         change_or_not = input('Will you give your pokemon a nickname? (yes / no): ')
         if change_or_not == 'yes' or change_or_not == 'y':
             nick = input(f"What is {enemy.species}\'s nickname? : ")
-            enemy.nickname = nick
-        gotcha = enemy
-        gotcha.hp = that_hp
+            gotcha.nickname = nick
         player.pokemon.append(gotcha)
         os.system(cl())
         return True
@@ -59,7 +59,7 @@ def pokeball(player, enemy):
         time.sleep(1)
         return False
 
-def change_pokemon(player):
+def change_pokemon(player, forced=False):
     if len(player.pokemon) > 1:
         ind = 1
         for i in player.pokemon:
@@ -68,6 +68,8 @@ def change_pokemon(player):
         to_what = int(input('What pokemon? : '))
         if to_what == 0 or to_what < 0 or to_what > len(player.pokemon):
             pass  # Think more
+        elif to_what == 1:
+            pass
         else:
             print(f"{player.pokemon[0].nickname}, switch out! Come back!")
             time.sleep(1)
@@ -75,8 +77,13 @@ def change_pokemon(player):
             time.sleep(1)
             player.pokemon[0], player.pokemon[to_what - 1] = player.pokemon[to_what - 1], player.pokemon[0]
     else:
-        print("You have only one Pokemon!")
-        time.sleep(1)
+        if not forced:
+            print("You have only one Pokemon!")
+            time.sleep(1)
+        else:
+            time.sleep(1)
+            print(f"Go! {player.pokemon[0].nickname}!")
+            time.sleep(1)
 
 def action(act, player, enemy):
     if act == 1:
