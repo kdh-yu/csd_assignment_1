@@ -3,7 +3,8 @@
 Hanyang University, Dept. of Data Science  
 Creative Software Design by Hyunjoon Kim  
 Assignment 1 - Text based Pokemon game  
-Code by Dohoon Kim
+Code by Dohoon Kim  
+Link : https://github.com/tt-adisoh/csd_assignment_1
 
 ---
 ## Description
