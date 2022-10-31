@@ -1,14 +1,12 @@
 from modules.battle import pokemon_encounter, move_pos
 from modules.Class import Player, _Bulbasaur, _Charmander, _Squirtle
-from modules.initial_setting import set_player_name, choose_pokemon
+from modules.initial_setting import set_player_name, choose_pokemon, cl
 from modules.ui import battle_ui, show_map, poke_appear
 from modules.battle_action import change_pokemon, action, enemy_action
 import time
 import os
 
 # Play game!
-
-# Wild Pokemon List
 
 # Order 1
 trainer_name = set_player_name()
@@ -28,7 +26,7 @@ while step <= 3:
             i.hp = 50
 
     # Order 5
-    show_map(player)
+    show_map(player, None)
     while True:
         direction = input("Which way? (N, E, W, S): ")
         if direction not in 'news':
@@ -42,14 +40,20 @@ while step <= 3:
     if encounter == None:  # Order 6 - A
         print("No pokemon appeared.")
         time.sleep(1)
-        os.system('clear')
-    else:
+        os.system(cl())
+    else:  # Order 6 - B
+        os.system(cl())
+        show_map(player, None)
+        time.sleep(0.5)
+        os.system(cl())
+        show_map(player, event=True)
+        time.sleep(1)
         battle_end = False
         poke_appear()
         intro_message = 0
         while True:
             
-            battle_ui(player, encounter)
+            battle_ui(player, encounter)  # Order 10
 
             if intro_message == 0:
                 print(f"   Wild {encounter.species} appeared!", end="\r")
@@ -57,29 +61,30 @@ while step <= 3:
                 intro_message += 1
             print("                                                     ", end='\r')
             act = int(input('What to do? : '))
-            catched = action(act, player, encounter)
+            catched = action(act, player, encounter)  # Order 8
 
             if catched == True:
                 break
             else:
                 pass
 
-            if encounter.hp <= 0:
+            if encounter.hp <= 0:  # Order 7
                 print(f'Enemy {encounter.species} fainted!')
                 break
 
-            enemy_action(player, encounter)
-            if player.pokemon[0].hp <= 0:
+            enemy_action(player, encounter)  # Order 9 (modified) : If not effective, enemy uses tackle.
+            if player.pokemon[0].hp <= 0:  # Order 7
                 print(f"{player.pokemon[0].nickname} has fainted!")
                 player.pokemon.remove(player.pokemon[0])
-                if len(player.pokemon) == 0:
+                if len(player.pokemon) == 0:  # Order 7 - A
                     print("You are out of Pokemon!")
                     step = 5
                     clear = False
                     break
-                else:
+                else:  # Order 7 - B
                     change_pokemon(player)
-if clear:
+
+if clear:  # Order 11
     time.sleep(1)
     print(f'\n{player.name} became Pokemon Master! Congratulations!!')
 else:

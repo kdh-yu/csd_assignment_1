@@ -1,9 +1,19 @@
 # Initial Settings
+
 from modules.Class import Charmander, Squirtle, Bulbasaur
 import time, os
+import platform
+
+def cl():
+    if platform.system() == 'Windows':
+        clear_message = 'cls'
+    if platform.system() == 'Darwin' or platform.system() == 'Linux':
+        clear_message = 'clear'
+    return clear_message
+
 
 def set_player_name():
-    os.system('clear')
+    os.system(cl())
     name = input('What is your name? : ')
     print(f'Oh, {name}... What a good name!')
     return name
@@ -43,4 +53,5 @@ def choose_pokemon(player):
     
     print(f"A world of dreams and adventures with Pokemon awaits! Let's Go!")
     time.sleep(2)
-    os.system('clear')
+    os.system(cl())
+

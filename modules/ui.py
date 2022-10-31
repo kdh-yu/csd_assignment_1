@@ -1,7 +1,9 @@
 # UI
-from battle import hp_bar
+
+from modules.battle import hp_bar
 import time
 import os
+from initial_setting import cl
 
 def name_displayer(name):
     return name + ' ' * (10 - len(name))
@@ -13,7 +15,7 @@ def hp_num_displayer(hp):
         return '0' + str(int(hp))
 
 def battle_ui(player, enemy):
-    os.system('clear')
+    os.system(cl())
     print(f'''
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                                    Enemy: {name_displayer(enemy.species)}                        │
@@ -29,7 +31,7 @@ def battle_ui(player, enemy):
 │                                                    5. Change Pokemon        │
 └─────────────────────────────────────────────────────────────────────────────┘''')
 
-def show_map(player, event):
+def show_map(player, event=None):
     ui_map = [['  ','  ','  ','  ','  ','  ','  ','  ','  ','  '],
             ['  ','  ','  ','  ','  ','  ','  ','  ','  ','  '],
             ['  ','  ','  ','  ','  ','  ','  ','  ','  ','  '],
@@ -42,7 +44,7 @@ def show_map(player, event):
     xpos, ypos = player.xpos, player.ypos
     ui_map[ypos][xpos] = ' 𖨆'
     if event == True:
-        ui_map[ypos-1][xpos] = ' !'
+        ui_map[ypos-1][xpos] = '❕'
     print('┌────────────────────┐')
     for i in ui_map:
         print('│', end='')
@@ -76,10 +78,10 @@ def poke_appear():
     '''
 
     for i in range(3):
-        os.system('clear')
+        os.system(cl())
         print(flash_1)
         time.sleep(0.3 + 0.1*i)
-        os.system('clear')
+        os.system(cl())
         print(flash_2)
         time.sleep(0.3 + 0.1*i)
     

@@ -1,6 +1,8 @@
 # Battle Action
-from battle import is_effective
-import random, time
+
+from modules.battle import is_effective
+import random, time, os
+from initial_setting import cl
 
 def skill_attack(player, enemy):
     print(f"\r{player.pokemon[0].nickname} used {player.pokemon[0].elemental_attack}!")
@@ -36,7 +38,18 @@ def pokeball(player, enemy):
     if is_catched[0] == 'success':
         print(f"Gotcha! {enemy.species} was caught!")
         time.sleep(1)
-        player.pokemon.append(enemy)
+        os.system(cl())
+        print(f'''
+┌────────────────────┐
+    {enemy.species}
+└────────────────────┘
+        ''')
+        change_or_not = input('Will you give your pokemon a nickname? (yes / no): ')
+        if change_or_not == 'yes' or change_or_not == 'y':
+            nick = input(f"What is {enemy.species}\'s nickname? : ")
+            enemy.nickname = nick
+        gotcha = enemy
+        player.pokemon.append(gotcha)
         return True
     else:
         print("Oh no! The Pokemon broke Free!")
