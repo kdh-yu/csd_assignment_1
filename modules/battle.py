@@ -2,7 +2,7 @@
 import random
 
 def pokemon_encounter(wild):
-    encountered = random.choices(wild, weights=[2,2,2,4])
+    encountered = random.choices(wild, weights=[3,3,3,1])
     if encountered[0] != None:
         encountered[0].hp = 50
     return encountered

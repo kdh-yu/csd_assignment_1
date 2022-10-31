@@ -23,6 +23,7 @@ Let's Choose Your Pokemon among 3 of Pokemons and take a walk!
 |HP|50|50|50|
 |Strong Against|Grass|Fire|Water|
 |Weak Against|Water|Grass|Fire|
+|Encounter<br>in Wild|30%|30%|30%
 
 <br>
 [ Elemental Attack Damage Table ]
