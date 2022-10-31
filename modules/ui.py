@@ -42,7 +42,7 @@ def show_map(player, event=None):
             ['  ','  ','  ','  ','  ','  ','  ','  ','  ','  '],
             ['  ','  ','  ','  ','  ','  ','  ','  ','  ','  ']]
     xpos, ypos = player.xpos, player.ypos
-    ui_map[ypos][xpos] = ' 𖨆'
+    ui_map[ypos][xpos] = '𖨆 '
     if event == True:
         ui_map[ypos-1][xpos] = '❕'
     print('┌────────────────────┐')
