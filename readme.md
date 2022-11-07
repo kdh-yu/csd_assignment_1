@@ -6,6 +6,10 @@ Assignment 1 - Text based Pokemon game
 Code by Dohoon Kim  
 Link : https://github.com/tt-adisoh/csd_assignment_1
 
+<br>
+<iframe width="1022" height="575" src="https://www.youtube.com/embed/XWx6ddQsZDw" title="Text based mini Pokemon Game" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br>
+
 ---
 ## Description
 
