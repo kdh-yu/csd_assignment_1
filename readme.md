@@ -46,7 +46,7 @@ Let's Choose Your Pokemon among 3 of Pokemons and take a walk!
 <br>
 [ Pokemon Weakness Chart ]
 
-|Type|Fire|Water|Grass|
+|Attack \ Defend|Fire|Water|Grass|
 |-|-|-|-|
 |Fire|x1|x0.5|x2|
 |Water|x2|x1|x0.5|
