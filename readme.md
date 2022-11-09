@@ -3,9 +3,10 @@
 Hanyang University, Dept. of Data Science  
 Creative Software Design by Hyunjoon Kim  
 Assignment 1 - Text based Pokemon game  
-Code by Dohoon Kim  
+Code by Dohoon Kim (2022094093)
 Link : https://github.com/tt-adisoh/csd_assignment_1
 
+↓↓ Click to watch gameplay video  
 [![Gameplay](http://img.youtube.com/vi/XWx6ddQsZDw/0.jpg)](https://youtu.be/XWx6ddQsZDw)
 
 ---
@@ -64,15 +65,29 @@ Flowchart by TA Jimin Woo
 
 ```bash
 CSD_ASSIGNMENT_1
-├─ __pycache__
-├─ readme.md
-├─ main.py
-├─ resources
-│      └─ assignment1_flowchart.png
-└─ modules
-        ├─ battle_action.py
-        ├─ battle.py
-        ├─ Class.py
-        ├─ initial_setting.py
-        └─ ui.py
+├── __pycache__
+├── gameplay
+│   ├── 0. Initial.png
+│   ├── 1. Choose Way.png
+│   ├── 2. Encounter event.png
+│   ├── 3. Main UI.png
+│   ├── 4. Use Tackle.png
+│   ├── 5. Cure.png
+│   ├── 6. Capture.png
+│   ├── 7. Captured - nickname.png
+│   ├── 8. Pokemon Change.png
+│   ├── 9. Over.png
+│   └── gameplay.mp4
+├── main.py
+├── modules
+│   ├── Class.py
+│   ├── __pycache__
+│   ├── battle.py
+│   ├── battle_action.py
+│   ├── initial_setting.py
+│   └── ui.py
+├── readme.md
+└── resources
+    └── assignment1_flowchart.png
+
 ``` 
